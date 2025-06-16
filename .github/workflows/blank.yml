@@ -1,30 +1,31 @@
-name: Run app.py
+name: Run app.py when changed
 
 on:
   push:
-      branches: [main]
-        pull_request:
-            branches: [main]
-              workflow_dispatch:
+    paths:
+      - 'app.py'
+  pull_request:
+    paths:
+      - 'app.py'
+  workflow_dispatch:
 
-              jobs:
-                run-python-app:
-                    runs-on: ubuntu-latest
+jobs:
+  run-app:
+    runs-on: ubuntu-latest
 
-                        steps:
-                              - name: Checkout repository
-                                      uses: actions/checkout@v3
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-                                            - name: Set up Python
-                                                    uses: actions/setup-python@v4
-                                                            with:
-                                                                      python-version: '3.10'  # Hoặc phiên bản Python bạn cần
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
 
-                                                                            - name: Install dependencies
-                                                                                    run: |
-                                                                                              python -m pip install --upgrade pip
-                                                                                                        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-                                                                                                        
-                                                                                                              - name: Run app.py
-                                                                                                                      run: python app.py
-                                                                                                                      
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    - name: Run app.py
+      run: python app.py
