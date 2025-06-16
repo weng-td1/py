@@ -2,7 +2,7 @@ import requests
 import time
 import signal
 import sys
-from playwright.sync_api import sync_playwright
+
 
 API_URL = "https://engine.hyperbeam.com/v0/vm"
 START_URL = "https://akcgh.pages.dev"
