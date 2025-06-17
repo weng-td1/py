@@ -94,7 +94,7 @@ def main():
 
         print(f"{Color.YELLOW}→ Cycle {cycle} completed. Waiting 1 hour before next cycle...{Color.END}")
         if cycle < NUM_CYCLES:
-            time.sleep(3600)  # Chờ 1 tiếng
+            time.sleep(3700)  # Chờ 1 tiếng
         else:
             print(f"{Color.YELLOW}→ All cycles done. Cleaning up...{Color.END}")
 
